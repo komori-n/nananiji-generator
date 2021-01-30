@@ -168,7 +168,7 @@ function getSearchTypeName(search_type) {
 function makeTweetUrl(value, expr, search_type) {
     var searchTypeStr = getSearchTypeName(search_type);
     var text = encodeURIComponent(value + "=" + expr + "｜" + document.title);
-    var url = encodeURIComponent(location.url);
-    var hashtags = encodeURIComponent("nhk_generator");
+    var url = encodeURIComponent("https://komori-n.github.io/nananiji-generator/");
+    var hashtags = encodeURIComponent("nananiji_generator");
     return `http://twitter.com/share?text=${text}&url=${url}&hashtags=${hashtags}`;
 }
