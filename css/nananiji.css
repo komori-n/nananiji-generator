@@ -1,0 +1,19 @@
+* {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.container {
+    width: auto;
+    max-width: 960px;
+    padding: 0 15px;
+}
+
+.twitter-icon {
+    fill: #7dc8f7;
+    width: 27px;
+    height: 27px;
+    transition: all 0.15s ease-in-out;
+}
+.twitter-icon:hover, .twitter-icon:active {
+    fill: #1da1f2;
+}

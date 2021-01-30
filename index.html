@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@komori_pyonpyon" />
+    <meta property="og:title" content="ナナニジ算 ジェネレータ" />
+    <meta property="og:description" content="限られた数字の組と四則演算で、与えられた整数を作ります" />
+
+    <title>ナナニジ算 ジェネレータ</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="css/nananiji.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+    <div class="container">
+      <div class="mt-5">
+        <h1 class="font-weight-bold">
+          <nobr>ナナニジ算</nobr>
+          <nobr class="large">ジェネレータ</nobr>
+        </h1>
+        <hr/>
+      </div>
+
+      <div class="mb-4">
+        <p class="mt-2 mb-0">
+          限られた数字の組と四則演算（＋－×÷）で、与えられた整数を作ります。
+        </p>
+        <p class="mt-2 mb-0">
+          必ず数字の組が括弧で囲える式が生成されます。
+        </p>
+        <p class="my-0 small text-muted">
+          例）(22*(7+22)-7) のような式は生成されない
+        </p>
+        <p class="mt-2">
+          常に最適解が出力されるとは限らないのでご注意ください。
+        </p>
+      </div>
+
+      <form id="search-form">
+        <h4 class="my-2">探索モード</h4>
+        <div class="form-row">
+          <div class="col-sm-4 col-5 mb-1">
+            <div class="custom-control custom-radio">
+              <input id="nananiji" value="nananiji" name="list_name" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="nananiji">ナナニジ算（22/7）</label>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-sm-4 col-5 mb-1">
+            <div class="custom-control custom-radio">
+              <input id="hanshin" value="hanshin" name="list_name" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="hanshin">阪神算（33-4）</label>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col ml-4 mb-1">
+            <div class="form-check">
+              <input id="enable_3_34" class="form-check-input" type="checkbox" disabled>
+              <label class="form-check-label" for="enable_3_34">(3, 34)を有効にする</label>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-sm-4 col-5 mb-1">
+            <div class="custom-control custom-radio">
+              <input id="kyojin" value="kyojin" name="list_name" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="kyojin">巨人算（26-4）</label>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col ml-4 mb-1">
+            <div class="form-check">
+              <input id="enable_2_64" class="form-check-input" type="checkbox" disabled>
+              <label class="form-check-label" for="enable_2_64">(2, 64)を有効にする</label>
+            </div>
+          </div>
+
+          <div class="col-12 mt-2">
+            <h5>使用できる式</h5>
+          </div>
+          <div class="col-12 mb-3">
+            <span id="used_numbers">
+              [(227), (22, 7), (2, 2, 7)]
+            </span>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-12 my-1">
+            <h4>探索する数字</h4>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <input id="search-value" type="text" class="form-control" value=332 placeholder="332">
+                <button type="submit" class="btn btn-primary">
+                  <span id="search-button-text" class="text">実行</span>
+                  <span id="search-button-spinner" style="display:none" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <h4 class="mt-2 mb-3">結果</h4>
+      <div id="result">
+      </div>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <script src="js/nananiji.js"></script>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="twitter">
+          <path d="M67.812 16.141a26.246 26.246 0 0 1-7.519 2.06 13.134 13.134 0 0 0 5.756-7.244 26.127 26.127 0 0 1-8.313 3.176A13.075 13.075 0 0 0 48.182 10c-7.229 0-13.092 5.861-13.092 13.093 0 1.026.118 2.021.338 2.981-10.885-.548-20.528-5.757-26.987-13.679a13.048 13.048 0 0 0-1.771 6.581c0 4.542 2.312 8.551 5.824 10.898a13.048 13.048 0 0 1-5.93-1.638c-.002.055-.002.11-.002.162 0 6.345 4.513 11.638 10.504 12.84a13.177 13.177 0 0 1-3.449.457c-.846 0-1.667-.078-2.465-.231 1.667 5.2 6.499 8.986 12.23 9.09a26.276 26.276 0 0 1-16.26 5.606A26.21 26.21 0 0 1 4 55.976a37.036 37.036 0 0 0 20.067 5.882c24.083 0 37.251-19.949 37.251-37.249 0-.566-.014-1.134-.039-1.694a26.597 26.597 0 0 0 6.533-6.774z"></path>
+        </g>
+      </defs>
+    </svg>
+
+    <footer class="pt-5 my-5 text-muted text-center text-small">
+      <p class="mb-1">
+        <a class="text-muted" href="https://twitter.com/komori_pyonpyon">@komori_pyonpyon</a>
+      </p>
+    </footer>
+  </body>
+</html>
